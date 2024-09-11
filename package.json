@@ -1,0 +1,12 @@
+{
+  "name": "allclimb-red",
+  "packageManager": "yarn@3.6.4",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "turbo": "^2.1.0"
+  }
+}
