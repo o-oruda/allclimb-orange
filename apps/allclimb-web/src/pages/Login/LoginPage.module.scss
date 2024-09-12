@@ -1,0 +1,84 @@
+.sign-in {
+  display: flex;
+  flex-direction: column;
+  flex:1;
+
+  .sign-in__box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    flex:1;
+    padding: 56px 0;
+  }
+
+  .sign-in__title {
+    width: 107px;
+    height: 51px;
+    background: url(../../resources/images/pages/SignIn/bg-signin-title.png) no-repeat 0 0;
+    background-size: 107px 51px;
+  }
+
+  .sign-in__text {
+    margin-top: 8px;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+    opacity: 0.9;
+    font-size: 16px;
+  }
+}
+
+.sign-in-bottom {
+  padding: 0 20px 24px;
+
+  .sign-in-bottom__button {
+    display: block;
+    width: 100%;
+    line-height: 25px;
+    height: 56px;
+    color: #000;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 16px;
+
+    & + .sign-in-bottom__button {
+      margin-top: 16px;
+    }
+
+    &::before {
+      content: '';
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 12px;
+      width: 24px;
+      height: 24px;
+      background-size: 24px 24px;
+    }
+
+    &.sign-in-bottom__button--kakao {
+      background-color: #fce51e;
+
+      &::before {
+        background-image: url(../../resources/images/pages/SignIn/icon-signin-kakao.svg);
+      }
+    }
+
+    &.sign-in-bottom__button--google {
+      background-color: #fff;
+
+      &::before {
+        background-image: url(../../resources/images/pages/SignIn/icon-signin-google.svg);
+      }
+    }
+
+    &.sign-in-bottom__button--apple {
+      color: #fff;
+      background-color: #000;
+
+      &::before {
+        background-image: url(../../resources/images/pages/SignIn/icon-signin-apple.svg);
+      }
+    }
+  }
+}

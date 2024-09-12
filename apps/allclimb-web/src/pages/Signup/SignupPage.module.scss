@@ -1,0 +1,203 @@
+.sign-up {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	padding-bottom: 96px;
+	width: 100%;
+}
+
+.sign-up__skip-button {
+	position: fixed;
+	top: 8px;
+	right: 8px;
+	padding: 0 8px;
+	height: 40px;
+	color: #fff;
+	font-size: 15px;
+}
+
+.sign-up__title {
+	margin-top: 32px;
+	padding: 0 24px;
+	line-height: 38px;
+	color: #fff;
+	font-size: 26px;
+	font-weight: 700;
+}
+
+.sign-up-center {
+	margin-top: 56px;
+	padding: 0 24px;
+
+	.sign-up-center__list {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.sign-up-center__item {
+		margin: 0 10px 10px 0;
+	}
+
+	.sign-up-center__button {
+		display: block;
+		padding: 0 14px;
+		line-height: 48px;
+		color: #fff;
+		font-size: 16px;
+		font-weight: 500;
+		border-radius: 12px;
+		background-color: #2d2d2d;
+
+		&.sign-up-center__button--active {
+			box-shadow: inset 0 0 0 2px #f5144d;
+		}
+
+		&.sign-up-center__button--plus {
+			min-width: 136px;
+
+			&::before {
+				content: '';
+				display: inline-block;
+				vertical-align: top;
+				margin: 14px 8px 0 0;
+				width: 20px;
+				height: 20px;
+				background: url(../../resources/images/pages/SignUp/icon-signup-plus.svg)
+					no-repeat 0 0;
+				background-size: 20px 20px;
+			}
+		}
+	}
+}
+
+.sign-up-bottom {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	transform: translateY(100%);
+	box-sizing: border-box;
+	padding: 0 20px 20px;
+	width: 100%;
+	transition: transform 0.2s ease-out;
+	background-color: #1e1f23;
+
+	&.sign-up-bottom--active {
+		transform: translateY(0);
+	}
+
+	.sign-up-bottom__button {
+		display: block;
+		width: 100%;
+		height: 56px;
+		color: #fff;
+		font-size: 18px;
+		font-weight: 500;
+		border-radius: 16px;
+		background-color: #f5144d;
+	}
+}
+
+//검색
+.sign-up-search {
+	padding: 8px 0;
+
+	.sign-up-search__title {
+		padding: 0 24px;
+		line-height: 31px;
+		color: #fff;
+		font-size: 22px;
+		font-weight: 700;
+	}
+
+	.sign-up-search__box {
+		padding: 24px 16px 8px;
+	}
+
+	// [TODO] PUB 자동완성 임시
+	.sign-up-auto-search__box {
+		z-index: 3;
+		width: 70vw;
+		background-color: #fff;
+		position: absolute;
+		border: 2px solid;
+		padding: 15px;
+		border-radius: 4px;
+		margin-top: 3px;
+
+		li {
+			padding: 10px 8px;
+			width: 100%;
+			font-size: 14px;
+			font-weight: bold;
+			z-index: 4;
+			letter-spacing: 2px;
+			&:hover {
+				background-color: #edf5f5;
+				cursor: pointer;
+			}
+			position: relative;
+		}
+	}
+
+	.sign-up-search-result__box {
+		padding: 24px 16px 8px;
+		display: flex;
+
+		// [TODO] PUB 자동완성 결과 뱃지 임시
+		.sign-up-search-result__button {
+			display: flex;
+			align-items: center;
+			padding: 0 14px;
+			line-height: 40px;
+			color: #fff;
+			font-size: 16px;
+			font-weight: 500;
+			border-radius: 12px;
+			background-color: #2d2d2d;
+			width: fit-content;
+			margin: 3px;
+		}
+
+		.search-result-tag__clear {
+			margin-left: 8px;
+			min-width: 20px;
+			min-height: 20px;
+			width: 20px;
+			height: 20px;
+			background: url(../../resources/images/components/Search/icon-search-clear.svg)
+				no-repeat 0 0;
+			background-size: 20px 20px;
+
+			display: block;
+		}
+	}
+}
+
+// 지역선택
+.sign-up-area {
+	padding: 51px 19px;
+
+	.sign-up-area__list {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+
+		.sign-up-area__item {
+			padding: 5px;
+		}
+
+		.sign-up-area__button {
+			display: block;
+			width: 100%;
+			aspect-ratio: 1/1;
+			color: #fff;
+			font-size: 16px;
+			font-weight: 500;
+			border-radius: 16px;
+			background-color: #2d2f34;
+
+			&.sign-up-area__button--active {
+				box-shadow: inset 0 0 0 2px #f5144d;
+			}
+		}
+	}
+}

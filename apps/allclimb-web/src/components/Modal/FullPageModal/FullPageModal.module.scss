@@ -1,0 +1,12 @@
+.full-page-modal {
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 200;
+
+	// TODO - [PUB] 이건 제가 임시로 추가...
+	background: #1e1f23;
+}

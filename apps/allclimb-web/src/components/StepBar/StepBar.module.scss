@@ -1,0 +1,19 @@
+.progress-bar {
+	display: flex;
+	padding: 0 24px;
+
+	.progress-bar__step {
+		flex: 1;
+		height: 4px;
+		border-radius: 4px;
+		background-color: #d9d9d9;
+
+		& + .progress-bar__step {
+			margin-left: 4px;
+		}
+
+		&.progress-bar__step--active {
+			background-color: #f5144d;
+		}
+	}
+}

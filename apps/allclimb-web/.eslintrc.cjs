@@ -28,4 +28,5 @@ module.exports = {
 			typescript: {},
 		},
 	},
+	ignorePatterns: ['dist', '.eslintrc.cjs'],
 };

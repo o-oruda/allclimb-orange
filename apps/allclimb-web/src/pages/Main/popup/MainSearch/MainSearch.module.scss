@@ -1,0 +1,149 @@
+
+.main-search {
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	padding: 16px 0;
+	height: 100%;
+}
+
+.main-search__top {
+	padding: 8px 16px;
+}
+
+.main-search__scroll {
+	overflow-y: auto;
+	flex: 1;	
+} 
+
+.main-search__box {
+	margin-top: 24px;
+
+	& +	.main-search__box {
+		margin-top: 44px;
+	}
+}
+
+.main-search__title {
+	padding: 0 24px;
+	line-height: 24px;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.main-search-history {
+	overflow-y: auto;
+	display: flex;
+	margin-top: 12px;
+
+	&::before,
+	&::after {
+		content: '';
+		display: block;
+		min-width: 24px;
+	}
+
+	.main-search-history__item {
+		&:not(:last-child) {
+			margin-right: 8px;
+		}
+	}
+	
+	.main-search-history__button {
+		display: block;
+		padding: 5px 12px;
+		line-height: 22px;
+		color: #b6b7be;
+		font-size: 14px;
+		white-space: nowrap;
+		border-radius: 20px;
+		background-color: #2d2f34;
+	}
+}
+
+.main-search-rank {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	counter-reset: list-num;
+	margin-top: 2px;
+	padding: 0 24px;
+
+	.main-search-rank__item {
+		overflow: hidden;
+		width: calc(50% - 24px);
+		margin-top: 14px;
+	}
+
+	.main-search-rank__button {
+		overflow: hidden;
+		position: relative;
+		display: block;
+		padding-left: 28px;
+		line-height: 20px;
+		color: #fff;
+		font-size: 14px;
+		text-align: left;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+
+		&::before {
+			counter-increment:list-num;
+			content: counter(list-num);
+			position: absolute;
+			top: 0;
+			left: 0;
+			line-height: 20px;
+			color: #ff0052;
+			font-size: 14px;
+		}
+	}
+}
+
+.main-search-reulst {
+	margin-top: 16px;
+
+	.main-search-reulst__item {
+		padding: 0 24px;
+
+		& + .main-search-reulst__item {
+			margin-top: 4px;
+		}
+	}
+
+	.main-search-reulst__link {
+		display: flex;
+		align-items: center;
+		padding: 10px 0;
+	}
+
+	.main-search-reulst__img {
+		margin-right: 16px;
+		min-width: 44px;
+		width: 44px;
+		height: 44px;
+	}
+
+	.main-search-reulst__name {
+		line-height: 24px;
+		color: #fff;
+		font-size: 16px;
+		font-weight: 500;
+
+		em {
+			color: #ff0052;
+		}
+	}
+
+	.main-search-reulst__location {
+		line-height: 20px;
+		color: #6b6b6b;
+		font-size: 13px;
+
+		em {
+			color: #ff0052;
+		}
+	}
+}
