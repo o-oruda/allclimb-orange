@@ -9,17 +9,55 @@ import useSearchAutoComplete from '../../hooks/useSearchAutoComplete';
 import FullPageModal from '@/components/Modal/FullPageModal/FullPageModal';
 import Search from '@/components/Search';
 import NavBar from '@/components/NavBar/NavBar';
+import useSignUpStore from '@/store/useSignupStore';
 
 const cx = classNames.bind(styles);
 
 const GroundAddModal = () => {
 	// 선택한 클라이밍장 결과
 	const [selectedTags, setSelectedTags] = useState<string[]>([]);
+	const [showAddButton, setShowAddButton] = useState<boolean>(false);
 
 	const { matchResult } = useSearchAutoComplete();
 	const { searchValue, setSearchValue } = useSearchStore();
 	const { addPreferGround } = useManagePreferList();
 	const { closeModal } = useModalStore();
+	const { customGymList } = useSignUpStore();
+
+	/**
+	 * 클라이밍장 추가
+	 * @param value // 클라이밍장
+	 */
+	const onClickGround = (value: string) => {
+		if (!selectedTags.includes(value)) {
+			setSelectedTags([...selectedTags, value]);
+		}
+
+		setSearchValue('');
+	};
+
+	/**
+	 * 추가한 클라이밍장 제거
+	 * @param value
+	 */
+	const onDeleteBadge = (value: string) => {
+		const newSelected = selectedTags.filter((item) => item !== value);
+		setSelectedTags(newSelected);
+
+		newSelected.length === 0 &&
+			customGymList.length &&
+			setShowAddButton(true);
+	};
+
+	/**
+	 * 모달 상태 초기화
+	 */
+	const fnSetDefault = () => {
+		setSearchValue('');
+		addPreferGround(selectedTags);
+		closeModal();
+		setShowAddButton(false);
+	};
 
 	return (
 		<FullPageModal>
@@ -43,12 +81,9 @@ const GroundAddModal = () => {
 										return (
 											<li
 												key={ground}
-												onClick={() => {
-													setSelectedTags([
-														...selectedTags,
-														ground,
-													]);
-												}}
+												onClick={() =>
+													onClickGround(ground)
+												}
 											>
 												{ground}
 											</li>
@@ -64,50 +99,47 @@ const GroundAddModal = () => {
 				</div>
 
 				<div className={cx('sign-up-search-result__box')}>
-					{selectedTags?.length > 0 &&
-						selectedTags.map((selected) => {
-							return (
-								<div
-									className={cx(
-										'sign-up-search-result__button',
-									)}
-									key={selected}
-								>
-									{selected}
-									<button
+					<ul className={cx('sign-up-center__list')}>
+						{selectedTags?.length > 0 &&
+							selectedTags.map((selected) => {
+								return (
+									<li
 										className={cx(
-											'search-result-tag__clear',
+											'sign-up-search-result__button',
 										)}
-										type="button"
-										onClick={() => {
-											const newSelected =
-												selectedTags.filter(
-													(item) => item !== selected,
-												);
-											setSelectedTags(newSelected);
-										}}
+										key={selected}
 									>
-										<span className="blind">입력 삭제</span>
-									</button>
-								</div>
-							);
-						})}
+										{selected}
+										<button
+											className={cx(
+												'search-result-tag__clear',
+											)}
+											type="button"
+											onClick={() =>
+												onDeleteBadge(selected)
+											}
+										>
+											<span className="blind">
+												입력 삭제
+											</span>
+										</button>
+									</li>
+								);
+							})}
+					</ul>
 				</div>
 			</div>
 
 			<div
 				className={cx('sign-up-bottom', {
-					'sign-up-bottom--active': selectedTags.length > 0,
+					'sign-up-bottom--active':
+						selectedTags.length > 0 || showAddButton,
 				})}
 			>
 				<button
 					type="button"
 					className={cx('sign-up-bottom__button')}
-					onClick={() => {
-						setSearchValue('');
-						addPreferGround(selectedTags);
-						closeModal();
-					}}
+					onClick={fnSetDefault}
 				>
 					추가
 				</button>

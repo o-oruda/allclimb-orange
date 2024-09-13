@@ -75,7 +75,7 @@ const PreferGround = () => {
 			<GroundAddModal />
 
 			{/* [다음] 버튼 */}
-			<NextButton />
+			<NextButton activeGym={activeGym} />
 		</>
 	);
 };

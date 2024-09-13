@@ -1,18 +1,19 @@
 import classNames from 'classnames/bind';
 import styles from '@/pages/SignUp/SignUpPage.module.scss';
-import useToggleBadge from '../../hooks/useToggleBadge';
 import useSignUpStore from '@/store/useSignupStore';
 import useManagePreferList from '../../hooks/useManagePreferList';
 
 const cx = classNames.bind(styles);
 
-const NextButton = () => {
-	const { activeGym } = useToggleBadge();
+interface INextButtonProps {
+	activeGym: { [key: string]: boolean };
+}
+
+const NextButton = (props: INextButtonProps) => {
+	const { activeGym } = props;
 	const { getActiveGymList } = useManagePreferList();
 	const { customGymList, updateStep, updateSignUpState, step } =
 		useSignUpStore();
-
-	console.log(activeGym);
 
 	return (
 		<div

@@ -116,13 +116,18 @@
 	// [TODO] PUB 자동완성 임시
 	.sign-up-auto-search__box {
 		z-index: 3;
-		width: 70vw;
-		background-color: #fff;
+		background-color: #2d2f34;
 		position: absolute;
-		border: 2px solid;
+		border: 1px solid;
 		padding: 15px;
 		border-radius: 4px;
-		margin-top: 3px;
+		margin-top: 5px;
+		color: #fff;
+		width: auto;
+
+		ul {
+			padding-right: 8px;
+		}
 
 		li {
 			padding: 10px 8px;
@@ -132,16 +137,19 @@
 			z-index: 4;
 			letter-spacing: 2px;
 			&:hover {
-				background-color: #edf5f5;
+				background-color: #6a6868;
 				cursor: pointer;
 			}
-			position: relative;
 		}
 	}
 
 	.sign-up-search-result__box {
 		padding: 24px 16px 8px;
-		display: flex;
+
+		.sign-up-center__list {
+			display: flex;
+			flex-wrap: wrap;
+		}
 
 		// [TODO] PUB 자동완성 결과 뱃지 임시
 		.sign-up-search-result__button {
@@ -155,7 +163,7 @@
 			border-radius: 12px;
 			background-color: #2d2d2d;
 			width: fit-content;
-			margin: 3px;
+			margin: 0 10px 10px 0;
 		}
 
 		.search-result-tag__clear {
