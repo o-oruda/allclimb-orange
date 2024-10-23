@@ -3,13 +3,14 @@ import {
 	ScrollRestoration,
 	createBrowserRouter,
 } from 'react-router-dom';
-import { LoginPage, MainPage, SignupPage } from '@/pages';
+import { LoginPage, MainPage, SignupPage, TicketPage } from '@/pages';
 import { Suspense } from 'react';
 
 export const webPath = {
 	login: () => '/login',
 	signup: () => '/signup',
 	main: () => '/',
+	tickets: () => '/tickets',
 };
 
 type MainLayoutProps = {
@@ -50,6 +51,7 @@ const routes = [
 			{ path: webPath.main(), element: <MainPage /> },
 			{ path: webPath.login(), element: <LoginPage /> },
 			{ path: webPath.signup(), element: <SignupPage /> },
+			{ path: webPath.tickets(), element: <TicketPage /> },
 		],
 	},
 ];
