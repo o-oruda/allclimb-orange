@@ -11,6 +11,8 @@ export const webPath = {
 	signup: () => '/signup',
 	main: () => '/',
 	tickets: () => '/tickets',
+	pay: () => '/pay',
+	record: () => '/record',
 };
 
 type MainLayoutProps = {
@@ -52,6 +54,8 @@ const routes = [
 			{ path: webPath.login(), element: <LoginPage /> },
 			{ path: webPath.signup(), element: <SignupPage /> },
 			{ path: webPath.tickets(), element: <TicketPage /> },
+			{ path: webPath.pay(), element: <TicketPage /> },
+			{ path: webPath.record(), element: <TicketPage /> },
 		],
 	},
 ];

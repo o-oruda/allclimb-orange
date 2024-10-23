@@ -1,72 +1,60 @@
+import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './BottomNavi.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
+const NAV_ITEMS: {
+	path: string;
+	label: string;
+	className: string;
+}[] = [
+	{ path: '/', label: '홈', className: 'bottom-navi-list__button--home' },
+	{
+		path: '/tickets',
+		label: '이용권',
+		className: 'bottom-navi-list__button--ticket',
+	},
+	{
+		path: '/pay',
+		label: '올페이',
+		className: 'bottom-navi-list__button--pay',
+	},
+	{
+		path: '/record',
+		label: '기록',
+		className: 'bottom-navi-list__button--record',
+	},
+	{ path: '/my', label: '마이', className: 'bottom-navi-list__button--more' },
+];
+
 const BottomNavi = () => {
+	const navigate = useNavigate();
+	const location = useLocation();
+	console.log(location.pathname);
+
 	return (
 		<div className={cx('bottom-navi')}>
 			<ul className={cx('bottom-navi-list')}>
-				<li className={cx('bottom-navi-list__item')}>
-					{/* TODO - 선택시 aria-current="true" 적용 */}
-					<button
-						className={cx(
-							'bottom-navi-list__button',
-							'bottom-navi-list__button--home',
-						)}
-						aria-current="page"
+				{NAV_ITEMS.map((item) => (
+					<li
+						key={item.path}
+						className={cx('bottom-navi-list__item')}
 					>
-						홈
-					</button>
-				</li>
-
-				<li className={cx('bottom-navi-list__item')}>
-					<button
-						className={cx(
-							'bottom-navi-list__button',
-							'bottom-navi-list__button--ticket',
-						)}
-						aria-current="false"
-					>
-						이용권
-					</button>
-				</li>
-
-				<li className={cx('bottom-navi-list__item')}>
-					<button
-						className={cx(
-							'bottom-navi-list__button',
-							'bottom-navi-list__button--pay',
-						)}
-						aria-current="false"
-					>
-						올페이
-					</button>
-				</li>
-
-				<li className={cx('bottom-navi-list__item')}>
-					<button
-						className={cx(
-							'bottom-navi-list__button',
-							'bottom-navi-list__button--record',
-						)}
-						aria-current="false"
-					>
-						기록
-					</button>
-				</li>
-
-				<li className={cx('bottom-navi-list__item')}>
-					<button
-						className={cx(
-							'bottom-navi-list__button',
-							'bottom-navi-list__button--more',
-						)}
-						aria-current="false"
-					>
-						마이
-					</button>
-				</li>
+						<button
+							className={cx(
+								'bottom-navi-list__button',
+								item.className,
+							)}
+							aria-current={
+								location.pathname === item.path && 'true'
+							}
+							onClick={() => navigate(item.path)}
+						>
+							{item.label}
+						</button>
+					</li>
+				))}
 			</ul>
 		</div>
 	);
