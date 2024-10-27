@@ -1,37 +1,13 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './BottomNavi.module.scss';
 import classNames from 'classnames/bind';
+import { NAV_ITEMS } from '@/models/const';
 
 const cx = classNames.bind(styles);
-
-const NAV_ITEMS: {
-	path: string;
-	label: string;
-	className: string;
-}[] = [
-	{ path: '/', label: '홈', className: 'bottom-navi-list__button--home' },
-	{
-		path: '/tickets',
-		label: '이용권',
-		className: 'bottom-navi-list__button--ticket',
-	},
-	{
-		path: '/pay',
-		label: '올페이',
-		className: 'bottom-navi-list__button--pay',
-	},
-	{
-		path: '/record',
-		label: '기록',
-		className: 'bottom-navi-list__button--record',
-	},
-	{ path: '/my', label: '마이', className: 'bottom-navi-list__button--more' },
-];
 
 const BottomNavi = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
-	console.log(location.pathname);
 
 	return (
 		<div className={cx('bottom-navi')}>
