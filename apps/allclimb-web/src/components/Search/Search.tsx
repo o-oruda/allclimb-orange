@@ -20,10 +20,9 @@ const Search = () => {
 				/>
 				{/* TODO [F/E] - 노출시 한글자라도 있고 포커스 시 search-box__clear--active 추가 */}
 				<button
-					className={cx(
-						'search-box__clear',
-						'search-box__clear--active',
-					)}
+					className={cx('search-box__clear', {
+						'search-box__clear--active': searchValue,
+					})}
 					type="button"
 					onClick={resetSearchValue}
 				>
