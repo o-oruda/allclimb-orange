@@ -1,4 +1,3 @@
-import ClimbingLogo from '@/components/ClimbingLogo';
 import FullPageModal from '@/components/Modal/FullPageModal/FullPageModal';
 import styles from './MainSearch.module.scss';
 import classNames from 'classnames/bind';
@@ -6,11 +5,19 @@ import Search from '@/components/Search';
 import useSearch from '@/components/Search/features/useSearch';
 import RecentSearch from './RecentSearch/RecentSearch';
 import RealTimeSearch from './RealTimeSearch/RealTimeSearch';
+import SearchResult from './SearchResult/SearchResult';
+import useSearchAutoComplete from '@/hooks/useSearchAutoComplete';
+import { climbingGround } from '@/models/const';
 
 const cx = classNames.bind(styles);
 
 const MainSearch = () => {
 	const { searchValue } = useSearch();
+	const { matchResult } = useSearchAutoComplete({
+		list: climbingGround,
+		criteria: ['name', 'location'],
+	});
+
 	return (
 		<FullPageModal>
 			<div className={cx('main-search')}>
@@ -21,39 +28,15 @@ const MainSearch = () => {
 				<div className={cx('main-search__scroll')}>
 					{searchValue ? (
 						<ul className={cx('main-search-reulst')}>
-							<li className={cx('main-search-reulst__item')}>
-								<a
-									href="#"
-									className={cx('main-search-reulst__link')}
-								>
-									<div
-										className={cx(
-											'main-search-reulst__img',
-										)}
-									>
-										<ClimbingLogo />
-									</div>
-
-									<div>
-										<h4
-											className={cx(
-												'main-search-reulst__name',
-											)}
-										>
-											{/* TODO - 검색어 em 태그 감싸기 */}
-											<em>클</em>라이밍
-										</h4>
-										<p
-											className={cx(
-												'main-search-reulst__location',
-											)}
-										>
-											{/* TODO - 검색어 em 태그 감싸기 */}
-											<em>서</em>울시
-										</p>
-									</div>
-								</a>
-							</li>
+							{matchResult.map((result) => {
+								return (
+									<SearchResult
+										text={result}
+										keyword={searchValue}
+										key={result.name}
+									/>
+								);
+							})}
 						</ul>
 					) : (
 						<>

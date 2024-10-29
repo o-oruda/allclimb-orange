@@ -5,11 +5,12 @@ import { useState } from 'react';
 import useModalStore from '@/components/Modal/useModalStore';
 import useSearchStore from '@/components/Search/features/useSearchStore';
 import useManagePreferList from '../../hooks/useManagePreferList';
-import useSearchAutoComplete from '../../hooks/useSearchAutoComplete';
 import FullPageModal from '@/components/Modal/FullPageModal/FullPageModal';
 import Search from '@/components/Search';
 import NavBar from '@/components/NavBar/NavBar';
 import useSignUpStore from '@/store/useSignupStore';
+import useSearchAutoComplete from '@/hooks/useSearchAutoComplete';
+import { climbingGround } from '@/models/const';
 
 const cx = classNames.bind(styles);
 
@@ -18,7 +19,10 @@ const GroundAddModal = () => {
 	const [selectedTags, setSelectedTags] = useState<string[]>([]);
 	const [showAddButton, setShowAddButton] = useState<boolean>(false);
 
-	const { matchResult } = useSearchAutoComplete();
+	const { matchResult } = useSearchAutoComplete({
+		list: climbingGround,
+		criteria: ['name'],
+	});
 	const { searchValue, setSearchValue } = useSearchStore();
 	const { addPreferGround } = useManagePreferList();
 	const { closeModal } = useModalStore();
@@ -80,12 +84,12 @@ const GroundAddModal = () => {
 									{matchResult.map((ground) => {
 										return (
 											<li
-												key={ground}
+												key={ground.name}
 												onClick={() =>
-													onClickGround(ground)
+													onClickGround(ground.name)
 												}
 											>
-												{ground}
+												{ground.name}
 											</li>
 										);
 									})}
