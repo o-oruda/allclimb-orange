@@ -41,3 +41,10 @@ export const NAV_ITEMS: {
 	},
 	{ path: '/my', label: '마이', className: 'bottom-navi-list__button--more' },
 ];
+
+export const SIGNUP_STEP = {
+	PREFER: 'prefer',
+	ACTIVITY: 'activity',
+	DURATION: 'duration',
+	COMPLETE: 'complete',
+};

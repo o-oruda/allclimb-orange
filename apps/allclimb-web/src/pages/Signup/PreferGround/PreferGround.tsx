@@ -8,10 +8,11 @@ import useModalStore from '@/components/Modal/useModalStore';
 import useSignUpStore from '@/store/useSignupStore';
 import GroundAddModal from './components/GroundAddModal';
 import Badge from '@/components/Badge';
+import { IFunnelStep } from '@/models/common';
 
 const cx = classNames.bind(styles);
 
-const PreferGround = () => {
+const PreferGround = ({ onNext }: IFunnelStep) => {
 	const { activeGym, toggleBadge } = useToggleBadge();
 	const { openModal } = useModalStore();
 	const { gymList, customGymList } = useSignUpStore();
@@ -75,7 +76,7 @@ const PreferGround = () => {
 			<GroundAddModal />
 
 			{/* [다음] 버튼 */}
-			<NextButton activeGym={activeGym} />
+			<NextButton activeGym={activeGym} onNext={onNext} />
 		</>
 	);
 };
