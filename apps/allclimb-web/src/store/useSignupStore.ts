@@ -12,24 +12,27 @@ interface ISignUpData {
 }
 
 interface ISignUpState {
-	// 현재 스텝
-	step: number;
-
 	// 회원가입 선택 정보
 	signUpState: ISignUpData;
 
-	// 현재 스텝 업데이트
-	updateStep: (step: number) => void;
-
 	// 회원가입 선택 정보 업데이트
-	updateSignUpState: (newValue: string | string[]) => void;
+	updateSignUpState: () => void;
 
+	// 관심 클라이밍장
 	gymList: string[];
 	setGymList: (gymList: string[]) => void;
 
 	// 사용자 직접 추가 클라이밍장 목록
 	customGymList: string[];
 	setCustomGymList: (customList: string[]) => void;
+
+	// 활동 장소
+	activityArea: string;
+	setActivityArea: (activityArea: string) => void;
+
+	// 처음 시작 날짜
+	careerDuration: string;
+	setCareerDuration: (careerDuration: string) => void;
 }
 
 const defaultGroundList = [
@@ -43,32 +46,32 @@ const defaultGroundList = [
 ];
 
 const useSignUpStore = create<ISignUpState>((set) => ({
-	step: 1,
 	signUpState: {
 		preferGround: [''],
 		activityArea: '',
 		careerDuration: '',
 	},
-	updateStep: (step: number) => set({ step }),
-	updateSignUpState: (newValue: string | string[]) =>
-		set((state) => ({
-			signUpState: {
-				...state.signUpState,
-				...(state.step === 1 &&
-					Array.isArray(newValue) && { preferGround: newValue }),
-				...(state.step === 2 &&
-					typeof newValue === 'string' && { activityArea: newValue }),
-				...(state.step === 3 &&
-					typeof newValue === 'string' && {
-						careerDuration: newValue,
-					}),
-			},
-		})),
 
 	gymList: defaultGroundList,
 	setGymList: (gymList: string[]) => set({ gymList }),
 	customGymList: [],
 	setCustomGymList: (customGymList) => set({ customGymList }),
+
+	activityArea: '',
+	setActivityArea: (activityArea: string) => set({ activityArea }),
+
+	careerDuration: '',
+	setCareerDuration: (careerDuration: string) => set({ careerDuration }),
+
+	updateSignUpState: () =>
+		set((state) => ({
+			signUpState: {
+				...state.signUpState,
+				...{ preferGround: state.gymList },
+				...{ activityArea: state.activityArea },
+				...{ careerDuration: state.careerDuration },
+			},
+		})),
 }));
 
 export default useSignUpStore;

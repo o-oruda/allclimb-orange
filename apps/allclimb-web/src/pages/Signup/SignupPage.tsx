@@ -8,74 +8,75 @@ import CareerDuration from './CareerDuration';
 import useSignUpStore from '@/store/useSignupStore';
 import StepBar from '@/components/StepBar/StepBar';
 import NavBar from '@/components/NavBar/NavBar';
+import { useFunnel } from '@/hooks/useFunnel';
+import { SIGNUP_STEP } from '@/models/const';
 
 const cx = classNames.bind(styles);
 
 const SignUpPage = () => {
-	const { step, updateStep, signUpState } = useSignUpStore();
+	const { activityArea } = useSignUpStore();
+	const signupStep = Object.values(SIGNUP_STEP);
 
-	/**
-	 * [뒤로가기] 버튼 이벤트
-	 */
-	const goBack = useCallback(
-		() => updateStep(step > 1 ? step - 1 : step),
-		[step],
-	);
-
-	/**
-	 * [건너뛰기] 클릭 이벤트
-	 */
-	const skipStep = useCallback(() => updateStep(step + 1), [step]);
+	const { Funnel, Step, setStep, currentStep, prevStep, nextStep } =
+		useFunnel(signupStep);
 
 	useEffect(() => {
-		if (step === 4) {
+		if (currentStep === SIGNUP_STEP.COMPLETE) {
 			// TODO 회원가입 API
-			console.log(signUpState);
+			console.log(activityArea);
 		}
-	}, [step]);
+	}, [currentStep]);
 
 	return (
 		<>
 			<div className={cx('sign-up')}>
-				{step <= 3 && (
+				{currentStep !== SIGNUP_STEP.COMPLETE && (
 					<>
-						<NavBar goBack={goBack} />
+						<NavBar goBack={prevStep} />
 						<button
 							type="button"
 							className={cx('sign-up__skip-button')}
-							onClick={skipStep}
+							onClick={nextStep}
 						>
 							건너뛰기
 						</button>
 						<StepBar
 							hiddenTitle="질문 단계"
-							step={step}
-							totalStep={3}
+							step={signupStep.indexOf(currentStep) + 1}
+							totalStep={signupStep.length - 1}
 						/>
 					</>
 				)}
+				<Funnel>
+					<Step name={SIGNUP_STEP.PREFER}>
+						<PreferGround
+							onNext={() => setStep(SIGNUP_STEP.ACTIVITY)}
+						/>
+					</Step>
 
-				{/* 관심있는 클라이밍장 선택 */}
-				{step === 1 && <PreferGround />}
+					<Step name={SIGNUP_STEP.ACTIVITY}>
+						<ActivityArea
+							onNext={() => setStep(SIGNUP_STEP.DURATION)}
+						/>
+					</Step>
 
-				{/* 활동지역 선택 */}
-				{step === 2 && <ActivityArea />}
+					<Step name={SIGNUP_STEP.DURATION}>
+						<CareerDuration />
+					</Step>
 
-				{/* 경력 선택 */}
-				{step === 3 && <CareerDuration />}
-
-				{/* TODO 완료화면이 필요할 거 같음~? */}
-				{step === 4 && (
-					<p
-						style={{
-							color: 'red',
-							fontSize: '30px',
-							padding: '15px',
-						}}
-					>
-						회원가입 완료
-					</p>
-				)}
+					<Step name={SIGNUP_STEP.COMPLETE}>
+						{/* TODO 완료화면이 필요할 거 같음~? */}
+						<p
+							style={{
+								color: 'red',
+								fontSize: '30px',
+								padding: '15px',
+							}}
+						>
+							회원가입 완료
+						</p>
+					</Step>
+				</Funnel>
 			</div>
 		</>
 	);

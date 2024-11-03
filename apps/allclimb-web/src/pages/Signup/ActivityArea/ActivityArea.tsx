@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 
 import styles from '../SignUpPage.module.scss';
 import classNames from 'classnames/bind';
-import { Select } from 'models/common';
+import { IFunnelStep, Select } from 'models/common';
 import useSignUpStore from '@/store/useSignupStore';
 
 const cx = classNames.bind(styles);
@@ -23,11 +23,11 @@ const AREA_LIST: Select[] = [
 /**
  * 활동지역 선택
  */
-const ActivityArea = () => {
+const ActivityArea = ({ onNext }: IFunnelStep) => {
 	// 선택된 활동지역 데이터
 	const [selectedArea, setSelectedArea] = useState<string>('');
 
-	const { step, updateStep, updateSignUpState } = useSignUpStore();
+	const { setActivityArea } = useSignUpStore();
 
 	/**
 	 * [활동지역] 클릭 이벤트
@@ -38,9 +38,9 @@ const ActivityArea = () => {
 	 * [다음] 클릭 이벤트
 	 */
 	const nextStep = useCallback(() => {
-		updateSignUpState(selectedArea);
-		updateStep(step + 1);
-	}, [selectedArea]);
+		setActivityArea(selectedArea);
+		onNext?.();
+	}, [selectedArea, onNext]);
 
 	return (
 		<>
