@@ -1,3 +1,4 @@
+import React from 'react';
 import classNames from 'classnames/bind';
 import styles from '@/pages/SignUp/SignUpPage.module.scss';
 import { useState } from 'react';
@@ -10,7 +11,7 @@ import Search from '@/components/Search';
 import NavBar from '@/components/NavBar/NavBar';
 import useSignUpStore from '@/store/useSignupStore';
 import useSearchAutoComplete from '@/hooks/useSearchAutoComplete';
-import { climbingGround } from '@/models/const';
+import { CLIMBING_GROUND } from '@/models/const/common';
 
 const cx = classNames.bind(styles);
 
@@ -20,7 +21,7 @@ const GroundAddModal = () => {
 	const [showAddButton, setShowAddButton] = useState<boolean>(false);
 
 	const { matchResult } = useSearchAutoComplete({
-		list: climbingGround,
+		list: CLIMBING_GROUND,
 		criteria: ['name'],
 	});
 	const { searchValue, setSearchValue } = useSearchStore();
