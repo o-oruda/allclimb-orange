@@ -7,14 +7,14 @@ import RecentSearch from './RecentSearch/RecentSearch';
 import RealTimeSearch from './RealTimeSearch/RealTimeSearch';
 import SearchResult from './SearchResult/SearchResult';
 import useSearchAutoComplete from '@/hooks/useSearchAutoComplete';
-import { climbingGround } from '@/models/const';
+import { CLIMBING_GROUND } from '@/models/const/common';
 
 const cx = classNames.bind(styles);
 
 const MainSearch = () => {
 	const { searchValue } = useSearch();
 	const { matchResult } = useSearchAutoComplete({
-		list: climbingGround,
+		list: CLIMBING_GROUND,
 		criteria: ['name', 'location'],
 	});
 

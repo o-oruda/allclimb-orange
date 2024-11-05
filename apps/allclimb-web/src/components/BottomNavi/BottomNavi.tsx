@@ -1,7 +1,8 @@
+import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './BottomNavi.module.scss';
 import classNames from 'classnames/bind';
-import { NAV_ITEMS } from '@/models/const';
+import { NAV_ITEMS } from './models/const';
 
 const cx = classNames.bind(styles);
 

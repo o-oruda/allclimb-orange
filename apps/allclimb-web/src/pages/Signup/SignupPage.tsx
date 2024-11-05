@@ -1,3 +1,4 @@
+import React from 'react';
 import { useCallback, useEffect } from 'react';
 
 import styles from './SignUpPage.module.scss';
@@ -9,7 +10,7 @@ import useSignUpStore from '@/store/useSignupStore';
 import StepBar from '@/components/StepBar/StepBar';
 import NavBar from '@/components/NavBar/NavBar';
 import { useFunnel } from '@/hooks/useFunnel';
-import { SIGNUP_STEP } from '@/models/const';
+import { SIGNUP_STEP } from './models/const';
 
 const cx = classNames.bind(styles);
 

@@ -1,5 +1,7 @@
+import React from 'react';
 import styles from './LoginPage.module.scss';
 import classNames from 'classnames/bind';
+import { ROUTE } from '@/models/const/route';
 
 const cx = classNames.bind(styles);
 
@@ -32,6 +34,7 @@ const LoginPage = () => {
 						'sign-in-bottom__button--google',
 					)}
 					type="button"
+					href={ROUTE.GOOGLE_LOGIN}
 				>
 					구글 로그인
 				</button>
