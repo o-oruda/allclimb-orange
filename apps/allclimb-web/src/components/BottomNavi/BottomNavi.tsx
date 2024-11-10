@@ -1,4 +1,3 @@
-import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './BottomNavi.module.scss';
 import classNames from 'classnames/bind';
