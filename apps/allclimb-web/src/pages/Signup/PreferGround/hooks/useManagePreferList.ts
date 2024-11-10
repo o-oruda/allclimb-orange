@@ -12,8 +12,8 @@ const useManagePreferList = () => {
 		[key: string]: boolean;
 	}): string[] => {
 		return Object.entries(toggleResult)
-			.filter(([key, value]) => value === true)
-			.map(([key, value]) => key);
+			.filter(([, value]) => value === true)
+			.map(([key]) => key);
 	};
 
 	// 사용자 직접 클라이밍장 추가
