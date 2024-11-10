@@ -5,6 +5,8 @@ on:
     branches:
       - dev
       - release
+    tags:
+      - "dev*"   # dev 태그가 푸시되면 자동 배포가 트리거됩니다.
   workflow_dispatch:
 
 env:
@@ -36,8 +38,6 @@ jobs:
       - name: Build the app using Turbo
         run: |
           cd apps/allclimb-web  # Adjust to your actual directory
-          pwd
-          ls -l
           yarn build
 
       - name: Build and Push Docker Image to GHCR
