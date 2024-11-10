@@ -1,4 +1,4 @@
 declare module "*.scss" {
   const content: { [className: string]: string };
-  export = content;
+  // content를 다시 선언하지 않음, 타입만 선언
 }

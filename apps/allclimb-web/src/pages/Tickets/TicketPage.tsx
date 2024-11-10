@@ -1,5 +1,3 @@
-import React from "react";
-
 import styles from './Ticket.module.scss';
 import classNames from 'classnames/bind';
 import BottomNavi from "components/BottomNavi/BottomNavi";
