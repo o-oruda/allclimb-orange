@@ -1,4 +1,4 @@
-name: Java CI/CD Pipeline for allclimb/allclimb-orange
+name: NodeJS CI/CD Pipeline for allclimb/allclimb-orange
 
 on:
   push:
