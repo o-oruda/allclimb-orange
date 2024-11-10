@@ -1,0 +1,105 @@
+name: Java CI/CD Pipeline for allclimb/allclimb-orange
+
+on:
+  push:
+    branches:
+      - dev
+      - release
+  workflow_dispatch:
+
+env:
+  SERVICE_NAME: "allclimb-orange"
+  PROJECT_NAME: "allclimb"
+  BUILD_NUMBER: ${{ github.run_number }}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js (Yarn)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.9.0'  # Using the specified Node.js version
+          cache: 'yarn'
+
+      - name: Install Dependencies using Yarn
+        run: |
+          cd apps/allclimb-web  # Adjust to your actual directory
+          yarn install
+
+      - name: Build the app using Turbo
+        run: |
+          cd apps/allclimb-web
+          yarn build
+
+      - name: Build and Push Docker Image to GHCR
+        run: |
+          IMAGE_TAG=${{ env.BUILD_NUMBER }}
+          docker build -t ghcr.io/${{ github.repository_owner }}/${{ env.PROJECT_NAME }}/${{ env.SERVICE_NAME }}:$IMAGE_TAG -f apps/allclimb-web/Dockerfile .
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          docker push ghcr.io/${{ github.repository_owner }}/${{ env.PROJECT_NAME }}/${{ env.SERVICE_NAME }}:$IMAGE_TAG
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set Deployment Environment
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/dev" ]; then echo "ENV=dev" >> $GITHUB_ENV; else echo "ENV=prod" >> $GITHUB_ENV; fi
+
+      - name: SSH and Deploy allclimb-orange
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          debug: true
+          script: |
+            IMAGE_TAG=${{ env.BUILD_NUMBER }}
+            ENV=${{ github.ref == 'refs/heads/dev' && 'dev' || 'prod' }}
+
+            # .env 파일 생성하여 Docker Compose가 읽도록 설정
+            echo "TAG=$IMAGE_TAG" > /home/allclimb/allclimb-orange/.env
+            echo "ENV=$ENV" >> /home/allclimb/allclimb-orange/.env
+
+            # Docker Compose 실행
+            docker login ghcr.io -u ${{ github.actor }} --password-stdin <<< "${{ secrets.GITHUB_TOKEN }}"
+            cd /home/allclimb/allclimb-orange
+            docker compose --env-file .env up -d
+
+  # Slack notification step that always runs, even if the job fails
+  notify-slack:
+    needs: [build-and-push, deploy]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Send Slack Notification
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_REF: ${{ github.ref }}
+          BUILD_NUMBER: ${{ env.BUILD_NUMBER }}
+          ENVIRONMENT: ${{ github.ref == 'refs/heads/dev' && 'dev' || 'prod' }}
+        run: |
+          STATUS="Success"
+          if [ "${{ job.status }}" != "success" ]; then STATUS="Failed"; fi
+
+          # 초 단위로 시작 및 종료 시간 계산
+          START_TIME=$(date -d "${{ github.event.workflow_run.created_at }}" +%s)
+          END_TIME=$(date +%s)
+          DEPLOY_DURATION=$((END_TIME - START_TIME))
+          
+          # 분과 초로 변환
+          MINUTES=$((DEPLOY_DURATION / 60))
+          SECONDS=$((DEPLOY_DURATION % 60))
+
+          curl -X POST -H 'Content-type: application/json' --data "{
+            \"text\": \"*Deployment Result*: $STATUS\n*Branch*: $GITHUB_REF\n*Duration*: ${MINUTES}m ${SECONDS}s\n*Deployed By*: $GITHUB_ACTOR\n*Build Number*: $BUILD_NUMBER\n*Environment*: $ENVIRONMENT\"
+          }" $SLACK_WEBHOOK_URL
