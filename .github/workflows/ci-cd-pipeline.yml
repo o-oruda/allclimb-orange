@@ -35,6 +35,9 @@ jobs:
 
       - name: Build the app using Turbo
         run: |
+          pwd
+          ls -l
+          cd apps/allclimb-web
           yarn build
 
       - name: Build and Push Docker Image to GHCR
