@@ -29,8 +29,8 @@ type BottomModalProps = {
  */
 const BottomModal: React.FC<BottomModalProps> = ({
 	children,
-	className,
-	colorType,
+	// className,
+	// colorType,
 }) => {
 	const { isOpen, closeModal } = useModalStore();
 

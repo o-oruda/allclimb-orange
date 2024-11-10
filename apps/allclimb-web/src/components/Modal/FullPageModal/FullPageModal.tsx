@@ -11,7 +11,7 @@ type FullPageModalProps = {
 };
 
 const FullPageModal: React.FC<FullPageModalProps> = ({ children }) => {
-	const { isOpen, closeModal } = useModalStore();
+	const { isOpen } = useModalStore();
 
 	if (!isOpen) return null;
 
