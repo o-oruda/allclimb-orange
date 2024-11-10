@@ -1,4 +1,3 @@
-import React from 'react';
 import FullPageModal from '@/components/Modal/FullPageModal/FullPageModal';
 import styles from './MainSearch.module.scss';
 import classNames from 'classnames/bind';

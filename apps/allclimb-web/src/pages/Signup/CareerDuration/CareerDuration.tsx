@@ -1,14 +1,16 @@
 import BottomModal from '@/components/Modal/BottomModal/BottomModal';
 import styles from '../SignUpPage.module.scss';
 import classNames from 'classnames/bind';
-import { IFunnelStep } from '@/models/common';
+// import { IFunnelStep } from '@/models/common';
 
 const cx = classNames.bind(styles);
 
 /**
  * 경력 선택
  */
-const CareerDuration = (props: IFunnelStep) => {
+const CareerDuration = (
+	// props: IFunnelStep
+) => {
 	return (
 		<>
 			{/* TODO [F/E] - 날짜 선택  */}
