@@ -22,6 +22,8 @@ module.exports = {
 		'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
 		'no-unused-vars': 'error',
 		'no-multiple-empty-lines': 'error',
+		'react-hooks/rules-of-hooks': 'error',
+		'react-hooks/exhaustive-deps': 'warn'
 	},
 	settings: {
 		'import/resolver': {
