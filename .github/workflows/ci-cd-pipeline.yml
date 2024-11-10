@@ -35,6 +35,7 @@ jobs:
 
       - name: Build the app using Turbo
         run: |
+          cd apps/allclimb-web  # Adjust to your actual directory
           pwd
           ls -l
           cd apps/allclimb-web
