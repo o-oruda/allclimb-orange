@@ -1,5 +1,4 @@
-import React from 'react';
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import styles from './SignUpPage.module.scss';
 import classNames from 'classnames/bind';
