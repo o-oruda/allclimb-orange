@@ -6,7 +6,7 @@ on:
       - dev
       - release
     tags:
-      - "dev*"   # dev 태그가 푸시되면 자동 배포가 트리거됩니다.
+      - "dev*" # dev 태그가 푸시되면 자동 배포가 트리거됩니다.
   workflow_dispatch:
 
 env:
@@ -27,13 +27,13 @@ jobs:
       - name: Set up Node.js (Yarn)
         uses: actions/setup-node@v3
         with:
-          node-version: '20.9.0'  # Using the specified Node.js version
-          cache: 'yarn'
+          node-version: "20.9.0" # Using the specified Node.js version
+          cache: "yarn"
 
       - name: Install Dependencies using Yarn
         run: |
           cd apps/allclimb-web  # Adjust to your actual directory
-          yarn install
+          yarn install --frozen-lockfile || yarn install
 
       - name: Build the app using Turbo
         run: |
@@ -97,7 +97,7 @@ jobs:
           START_TIME=$(date -d "${{ github.event.workflow_run.created_at }}" +%s)
           END_TIME=$(date +%s)
           DEPLOY_DURATION=$((END_TIME - START_TIME))
-          
+
           # 분과 초로 변환
           MINUTES=$((DEPLOY_DURATION / 60))
           SECONDS=$((DEPLOY_DURATION % 60))
