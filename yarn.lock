@@ -4554,9 +4554,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001669":
-  version: 1.0.30001679
-  resolution: "caniuse-lite@npm:1.0.30001679"
-  checksum: 6fca375c6c3a749aaf1246f28c9b182f94b2aa0fb30a98d4c5a3df1a22054fba852df625be50b5ffa1c772a0c53f1aea14dead920d6c5d54030dd4dede0dba98
+  version: 1.0.30001680
+  resolution: "caniuse-lite@npm:1.0.30001680"
+  checksum: 2641d2b18c5ab0a6663cb350c5adc81e5ede1a7677d1c7518a8053ada87bf6f206419e1820a2608f76fa5e4f7bea327cbe47df423783e571569a88c0ea645270
   languageName: node
   linkType: hard
 
@@ -9513,7 +9513,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"picocolors@npm:^1.0.0, picocolors@npm:^1.1.0":
+"picocolors@npm:^1.0.0, picocolors@npm:^1.1.0, picocolors@npm:^1.1.1":
   version: 1.1.1
   resolution: "picocolors@npm:1.1.1"
   checksum: e1cf46bf84886c79055fdfa9dcb3e4711ad259949e3565154b004b260cd356c5d54b31a1437ce9782624bf766272fe6b0154f5f0c744fb7af5d454d2b60db045
@@ -9581,13 +9581,13 @@ __metadata:
   linkType: hard
 
 "postcss@npm:^8.4.43":
-  version: 8.4.47
-  resolution: "postcss@npm:8.4.47"
+  version: 8.4.48
+  resolution: "postcss@npm:8.4.48"
   dependencies:
     nanoid: ^3.3.7
-    picocolors: ^1.1.0
+    picocolors: ^1.1.1
     source-map-js: ^1.2.1
-  checksum: f78440a9d8f97431dd2ab1ab8e1de64f12f3eff38a3d8d4a33919b96c381046a314658d2de213a5fa5eb296b656de76a3ec269fdea27f16d5ab465b916a0f52c
+  checksum: 9bf75be1b45aa31f24b5f2ba2d9cf3021a788c3dd41d4d0491f4e2d7f9fe3329eb5e7b76ad96e2490ed1ebfeec0e484dc49cdef0071da2575d009c1dde5f8923
   languageName: node
   linkType: hard
 
@@ -11802,8 +11802,8 @@ __metadata:
   linkType: hard
 
 "vite-tsconfig-paths@npm:^5.0.1":
-  version: 5.1.1
-  resolution: "vite-tsconfig-paths@npm:5.1.1"
+  version: 5.1.2
+  resolution: "vite-tsconfig-paths@npm:5.1.2"
   dependencies:
     debug: ^4.1.1
     globrex: ^0.1.2
@@ -11813,7 +11813,7 @@ __metadata:
   peerDependenciesMeta:
     vite:
       optional: true
-  checksum: 0347ae0101bb0c9e117300a16349300f9615891537da6a75da272693c44b1e226f4734d3fd5fb92c5be58c11bdce4cafa90dc0bca6aa8c1bf241fbd668a0b1ad
+  checksum: bafc0645cc8d2e39fe4a388a072d0ab72e0b474b0bf31dc8b6128532b59ca80f7b52d96316254f573f17b5c193e4a79884f8d9c8e2edb8ea95af922720b49dd5
   languageName: node
   linkType: hard
 
