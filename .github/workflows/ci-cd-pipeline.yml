@@ -32,8 +32,8 @@ jobs:
 
       - name: Install Dependencies using Yarn
         run: |
-          cd apps/allclimb-web  # Adjust to your actual directory
-          yarn install --frozen-lockfile || yarn install
+          # cd apps/allclimb-web  Adjust to your actual directory
+          yarn install
 
       - name: Build the app using Turbo
         run: |
