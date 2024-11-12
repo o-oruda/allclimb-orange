@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import styles from '@/pages/SignUp/SignUpPage.module.scss';
+import styles from '@/pages/SignUp/SignupPage.module.scss';
 import useSignUpStore from '@/store/useSignupStore';
 import useManagePreferList from '../../../hook/common/useManagePreferList';
 import { useCallback } from 'react';
