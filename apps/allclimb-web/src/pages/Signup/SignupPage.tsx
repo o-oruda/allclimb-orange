@@ -7,7 +7,7 @@ import useSignUpStore from '@/store/useSignupStore';
 import { SIGNUP_STEP } from './constant/signupStep';
 import { PreferGround, ActivityArea, CareerDuration } from './ui';
 
-import styles from './SignUpPage.module.scss';
+import styles from './SignupPage.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
