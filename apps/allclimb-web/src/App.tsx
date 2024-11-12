@@ -6,7 +6,12 @@ function App() {
 	return (
 		<Layout>
 			<div className="wrap">
-				<RouterProvider router={router} />
+				<RouterProvider
+					router={router}
+					future={{
+						v7_startTransition: true,
+					}}
+				/>
 			</div>
 		</Layout>
 	);
