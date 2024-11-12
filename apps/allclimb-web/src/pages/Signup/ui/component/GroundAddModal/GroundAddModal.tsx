@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import styles from '@/pages/SignUp/SignupPage.module.scss';
+import styles from '../../../SignupPage.module.scss';
 import { useState } from 'react';
 
 import useModalStore from '@/shared/hook/useModalStore';
