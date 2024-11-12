@@ -32,7 +32,7 @@ jobs:
 
       - name: Install Dependencies using Yarn
         run: |
-          rm -f yarn.lock
+          # cd apps/allclimb-web  Adjust to your actual directory
           yarn cache clean
           yarn install
 
