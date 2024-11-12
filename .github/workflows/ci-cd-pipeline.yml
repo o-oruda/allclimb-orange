@@ -36,10 +36,6 @@ jobs:
           yarn cache clean
           yarn install
 
-      - name: Build with Vite
-        run: |
-          yarn vite build
-
       - name: Build the app using Turbo
         run: |
           cd apps/allclimb-web  # Adjust to your actual directory
