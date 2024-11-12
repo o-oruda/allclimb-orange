@@ -1,11 +1,14 @@
+import { BottomNavi } from '@/shared/component';
+import {
+	MainHeader,
+	AllClimbPick,
+	NewGyms,
+	GymRegion,
+	MainSearchModal,
+} from './ui';
+
 import styles from './MainPage.module.scss';
 import classNames from 'classnames/bind';
-import MainSearch from './components/popup/MainSearch/MainSearch';
-import BottomNavi from '@/components/BottomNavi/BottomNavi';
-import GymRegion from './GymRegion/GymRegion';
-import NewGyms from './NewGyms/NewGyms';
-import AllClimbPick from './AllClimbPick/AllClimbPick';
-import MainHeader from './components/MainHeader/MainHeader';
 
 const cx = classNames.bind(styles);
 
@@ -36,7 +39,7 @@ const MainPage = () => {
 
 				<BottomNavi />
 			</div>
-			<MainSearch />
+			<MainSearchModal />
 		</>
 	);
 };

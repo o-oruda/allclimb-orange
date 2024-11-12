@@ -1,6 +1,6 @@
 import { RouterProvider } from 'react-router-dom';
-import { router } from './router';
-import { Layout } from './components/Layout';
+import { router } from '@/apps/router';
+import Layout from '@/shared/component/Layout/Layout';
 
 function App() {
 	return (

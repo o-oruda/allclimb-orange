@@ -51,21 +51,21 @@
 
 	&.bottom-navi-list__button--home {
 		&::before {
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-home.svg);
+			background-image: url(../../../shared/resources/images/components/BottomNavi/icon-bottom-navi-home.svg);
 		}
 
 		&[aria-current='page']::before {
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-home-on.svg);
+			background-image: url(../../../shared/resources/images/components/BottomNavi/icon-bottom-navi-home-on.svg);
 		}
 	}
 
 	&.bottom-navi-list__button--ticket {
 		&::before {
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-ticket.svg);
+			background-image: url(../../../shared/resources/images/components/BottomNavi/icon-bottom-navi-ticket.svg);
 		}
 
 		&[aria-current='page']::before {
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-ticket-on.svg);
+			background-image: url(../../../shared/resources/images/components/BottomNavi/icon-bottom-navi-ticket-on.svg);
 		}
 	}
 
@@ -75,27 +75,27 @@
 			width: 62px;
 			height: 62px;
 			background-size: 62px 62px;
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-pay.svg);
+			background-image: url(../../../shared/resources/images/components/BottomNavi/icon-bottom-navi-pay.svg);
 		}
 	}
 
 	&.bottom-navi-list__button--record {
 		&::before {
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-record.svg);
+			background-image: url(../../../shared/resources/images/components/BottomNavi/icon-bottom-navi-record.svg);
 		}
 
 		&[aria-current='page']::before {
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-record-on.svg);
+			background-image: url(../../../shared/resources/images/components/BottomNavi/icon-bottom-navi-record-on.svg);
 		}
 	}
 
 	&.bottom-navi-list__button--more {
 		&::before {
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-more.svg);
+			background-image: url(../../../shared/resources/images/components/BottomNavi/icon-bottom-navi-more.svg);
 		}
 
 		&[aria-current='page']::before {
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-more-on.svg);
+			background-image: url(../../../shared/resources/images/components/BottomNavi/icon-bottom-navi-more-on.svg);
 		}
 	}
 }

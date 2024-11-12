@@ -1,15 +1,14 @@
 import { useEffect } from 'react';
 
+import { NavBar, StepBar } from '@/shared/component';
+import { useFunnel } from '@/shared/hook/useFunnel';
+import useSignUpStore from '@/store/useSignupStore';
+
+import { SIGNUP_STEP } from './constant/signupStep';
+import { PreferGround, ActivityArea, CareerDuration } from './ui';
+
 import styles from './SignUpPage.module.scss';
 import classNames from 'classnames/bind';
-import PreferGround from './PreferGround';
-import ActivityArea from './ActivityArea';
-import CareerDuration from './CareerDuration';
-import useSignUpStore from '@/store/useSignupStore';
-import StepBar from '@/components/StepBar/StepBar';
-import NavBar from '@/components/NavBar/NavBar';
-import { useFunnel } from '@/hooks/useFunnel';
-import { SIGNUP_STEP } from './models/const';
 
 const cx = classNames.bind(styles);
 
