@@ -1,0 +1,27 @@
+.navbar {
+	height: 56px;
+
+	.navbar__box {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 56px;
+		background-color: #1e1f23;
+	}
+
+	.navbar__left {
+		position: absolute;
+		top: 8px;
+		left: 8px;
+	}
+
+	.navbar__back-button {
+		display: block;
+		width: 40px;
+		height: 40px;
+		background: url(../../../shared/resources/images/components/NavBar/icon-navbar-back.svg)
+			no-repeat 0 0;
+		background-size: 40px 40px;
+	}
+}
