@@ -7,7 +7,7 @@ import RealTimeSearch from './RealTimeSearch/RealTimeSearch';
 import RecentSearch from './RecentSearch/RecentSearch';
 import SearchResult from './SearchResult/SearchResult';
 
-import styles from '../../MainPage.module.scss';
+import styles from './MainSearch.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);

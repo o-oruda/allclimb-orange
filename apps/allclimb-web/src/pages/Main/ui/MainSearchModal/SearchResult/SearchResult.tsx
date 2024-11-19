@@ -1,5 +1,5 @@
 import ClimbingLogo from '@/shared/component/ClimbingLogo';
-import styles from '../../../MainPage.module.scss';
+import styles from '../MainSearch.module.scss';
 import classNames from 'classnames/bind';
 import { useHighLight } from '@/shared/hook/useHighLight';
 import { IGymInfo } from '@/pages/Main/type/gymInfo';
