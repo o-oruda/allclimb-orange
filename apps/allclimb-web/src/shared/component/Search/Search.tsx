@@ -1,11 +1,13 @@
 import useSearch from '@/shared/hook/useSearch';
 import styles from './Search.module.scss';
 import classNames from 'classnames/bind';
+import useModalStore from '@/shared/hook/useModalStore';
 
 const cx = classNames.bind(styles);
 
 const Search = () => {
 	const { onChange, searchValue, resetSearchValue } = useSearch();
+	const { closeModal } = useModalStore();
 
 	return (
 		<div className={cx('search')}>
@@ -28,7 +30,11 @@ const Search = () => {
 					<span className="blind">입력 삭제</span>
 				</button>
 			</div>
-			<button className={cx('search__close')} type="button">
+			<button
+				className={cx('search__close')}
+				type="button"
+				onClick={closeModal}
+			>
 				취소
 			</button>
 		</div>
