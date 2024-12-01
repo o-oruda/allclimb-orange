@@ -10,7 +10,7 @@
     "turbo": "^2.1.0"
   },
   "scripts": {
-    "web": "cd apps/allclimb-web && yarn",
+    "web": "cd apps/allclimb-web && yarn dev",
     "app": "cd apps/AllClimbApp && yarn"
   }
 }
