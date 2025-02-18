@@ -5,9 +5,9 @@ FROM node:20.9.0 as builder
 WORKDIR /app
 
 # 프로젝트 파일 복사
-COPY apps/allclimb-web/package.json .
-COPY apps/allclimb-web/yarn.lock .
-COPY apps/allclimb-web/ .
+COPY package.json yarn.lock .
+COPY apps/allclimb-web/ ./apps/allclimb-web/
+
 
 # 의존성 설치 및 빌드
 RUN yarn install --frozen-lockfile
