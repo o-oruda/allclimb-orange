@@ -5,12 +5,11 @@ FROM node:20.9.0 as builder
 WORKDIR /app
 
 # 프로젝트 파일 복사
-COPY package.json yarn.lock .
-COPY apps/allclimb-web/ ./apps/allclimb-web/
+COPY ../../yarn.lock .
+COPY . .
 
-
-# 의존성 설치 및 빌드
-RUN yarn install --frozen-lockfile
+COPY node_modules.tar.gz .
+RUN tar -xzf node_modules.tar.gz && rm node_modules.tar.gz
 RUN yarn build
 
 # Stage 2: Output artifacts

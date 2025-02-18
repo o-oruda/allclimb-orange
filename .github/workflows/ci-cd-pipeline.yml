@@ -32,9 +32,8 @@ jobs:
 
       - name: Install Dependencies using Yarn
         run: |
-          # cd apps/allclimb-web  Adjust to your actual directory
-          yarn cache clean
-          yarn install  --immutable
+          yarn install --immutable
+          tar -czf node_modules.tar.gz node_modules
 
       - name: Build the app using Turbo
         run: |
