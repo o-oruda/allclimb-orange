@@ -11,6 +11,7 @@
   },
   "scripts": {
     "web": "cd apps/allclimb-web && yarn dev",
-    "app": "cd apps/AllClimbApp && yarn"
+    "app": "cd apps/AllClimbApp && yarn",
+    "web add": "yarn workspace allclimb-web add"
   }
 }

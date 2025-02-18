@@ -5,32 +5,18 @@ import {
 } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import Loading from '@/shared/component/Loading/Loading';
-
-export const webPath = {
-	login: () => '/login',
-	signup: () => '/signup',
-	main: () => '/',
-	tickets: () => '/tickets',
-	pay: () => '/pay',
-	record: () => '/record',
-};
-
-type MainLayoutProps = {
-	children: React.ReactNode;
-};
-
-const MainLayout = ({ children }: MainLayoutProps) => {
-	return children;
-};
+import { AuthProvider } from '@/shared/context/AuthContext';
+import { PrivateRoute, PublicRoute } from '@/shared/component';
+import { ROUTE } from '@/shared/constant';
 
 const Root = () => {
 	return (
-		<MainLayout>
+		<AuthProvider>
 			<Suspense fallback={<Loading />}>
 				<Outlet />
 			</Suspense>
 			<ScrollRestoration />
-		</MainLayout>
+		</AuthProvider>
 	);
 };
 
@@ -40,22 +26,57 @@ const LoginPage = lazy(() => import('@/pages/Login'));
 const SignupPage = lazy(() => import('@/pages/Signup'));
 const TicketPage = lazy(() => import('@/pages/Tickets'));
 
+type TRouteType = 'PRIVATE' | 'PUBLIC';
+type TRouteObject = { path: string; element: JSX.Element };
+
+const createAuthCheckRouter = (
+	routeType: TRouteType,
+	children: TRouteObject[],
+) => {
+	const authCheckRouter = children.map((child: TRouteObject) => {
+		return {
+			element:
+				routeType === 'PRIVATE' ? <PrivateRoute /> : <PublicRoute />,
+			children: [child],
+		};
+	});
+	return authCheckRouter;
+};
+
 const routes = [
 	{ path: '*', element: <div>404 Not Found</div> },
 	{
 		path: '/',
 		element: <Root />,
 		children: [
-			// {
-			// 	path: '/main',
-			// 	element: <Navigate to={webPath.main()} replace />,
-			// },
-			{ path: webPath.main(), element: <MainPage /> },
-			{ path: webPath.login(), element: <LoginPage /> },
-			{ path: webPath.signup(), element: <SignupPage /> },
-			{ path: webPath.tickets(), element: <TicketPage /> },
-			{ path: webPath.pay(), element: <TicketPage /> },
-			{ path: webPath.record(), element: <TicketPage /> },
+			...createAuthCheckRouter('PRIVATE', [
+				{
+					path: ROUTE.MAIN,
+					element: <MainPage />,
+				},
+				{
+					path: ROUTE.TICKET_MAIN,
+					element: <TicketPage />,
+				},
+				{
+					path: ROUTE.MARKET_QR,
+					element: <TicketPage />,
+				},
+				{
+					path: ROUTE.DAILY_RECORD,
+					element: <TicketPage />,
+				},
+			]),
+			...createAuthCheckRouter('PUBLIC', [
+				{
+					path: ROUTE.LOGIN,
+					element: <LoginPage />,
+				},
+				{
+					path: ROUTE.SIGN_UP,
+					element: <SignupPage />,
+				},
+			]),
 		],
 	},
 ];
