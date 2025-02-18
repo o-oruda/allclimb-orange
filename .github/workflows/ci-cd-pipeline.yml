@@ -34,7 +34,7 @@ jobs:
         run: |
           # cd apps/allclimb-web  Adjust to your actual directory
           yarn cache clean
-          yarn install --frozen-lockfile
+          yarn install  --immutable
 
       - name: Build the app using Turbo
         run: |
