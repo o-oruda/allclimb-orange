@@ -1,5 +1,5 @@
 .ticket {
-	padding-top: 56px;
+	padding: 56px 0 112px;
 }
 
 .ticket__header {
@@ -25,7 +25,61 @@
 }
 
 .ticket__list-box {
-	
+	padding-top: 16px;
+}
+
+.ticket-list {
+	overflow-x: auto;
+	display: flex;
+
+	&::before,
+	&::after {
+		content: '';
+		display: block;
+		min-width: 24px;
+	}
+
+	.ticket-list__item {
+		position: relative;
+		padding: 20px;
+		box-sizing: border-box;
+		min-width: 312px;
+		height: 147px;
+		background-color: #ff1b65;
+		border-radius: 16px;
+
+		& + .ticket-list__item {
+			margin-left: 16px;
+		}
+	}
+
+	.ticket-list__title {
+		line-height: 21px;
+		color: #fff;
+		font-size: 17px;
+	}
+
+	.ticket-list__number {
+		display: block;
+		margin-top: 4px;
+		line-height: 15px;
+		color: #fff;
+		font-size: 17px;
+	}
+
+	.ticket-list__count {
+		position: absolute;
+		right: 16px;
+		bottom: 16px;
+		line-height: 40px;
+		color: rgba(255, 255, 255, 0.35);
+		font-size: 32px;
+		font-weight: 700;
+
+		em {
+			color: #fff;
+		}
+	}
 }
 
 .ticket-tab {
@@ -109,4 +163,89 @@
 		line-height: 20px;
 		color: #b6b7be;
 	}
+}
+
+.ticket-detail {
+	margin: 0 24px;
+	padding: 28px 20px 20px;
+	border-radius: 16px;
+	background-color: #222428;
+}
+
+.ticket-detail-header {
+	display: flex;
+	justify-content: space-between;
+
+	.ticket-detail-header__title {
+		line-height: 26px;
+		color: #fff;
+		font-size: 18px;
+		font-weight: 700;
+	}
+
+	.ticket-detail-header__state {
+		display: block;
+		padding: 5px 8px;
+		line-height: 18px;
+		color: #ff0052;
+		font-size: 12px;
+		font-weight: 500;
+		border-radius: 8px;
+		background-color: rgba(255, 0, 82, 0.1);
+	}
+}
+
+.ticket-detail-info {
+	margin-top: 32px;
+
+	.ticket-detail-info__row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		& + .ticket-detail-info__row {
+			margin-top: 8px;
+		}
+	}
+
+	.ticket-detail-info__title {
+		line-height: 24px;
+		color: #fff;
+		font-size: 14px;
+	}
+
+	.ticket-detail-info__text {
+		line-height: 24px;
+		color: #fff;
+		font-size: 14px;
+	}
+
+	.ticket-detail-info__unit {
+		font-size: 14px;
+	}
+
+	.ticket-detail-info__row--total {
+		margin-top: 16px !important;
+		padding-top: 16px;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+		.ticket-detail-info__text {
+			line-height: 24px;
+			color: #fff;
+			font-size: 20px;
+			font-weight: 500;
+		}
+	}
+}
+
+.ticket-detail-button {
+	display: block;
+	margin-top: 32px;
+	padding: 11px 0;
+	width: 100%;
+	line-height: 24px;
+	color: #fff;
+	font-size: 14px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 10px;
 }

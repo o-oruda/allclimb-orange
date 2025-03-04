@@ -20,7 +20,42 @@ const Ticket = () => {
 							<h2 className={cx('ticket-list__title')}>
 								올클 블랙 이용권
 							</h2>
-							<span className={cx('ticket-list__number')}></span>
+
+							<span className={cx('ticket-list__number')}>
+								(FTEADGH22)
+							</span>
+
+							<span className={cx('ticket-list__count')}>
+								<em>3</em>/10회
+							</span>
+						</li>
+
+						<li className={cx('ticket-list__item')}>
+							<h2 className={cx('ticket-list__title')}>
+								올클 블랙 이용권
+							</h2>
+
+							<span className={cx('ticket-list__number')}>
+								(FTEADGH22)
+							</span>
+
+							<span className={cx('ticket-list__count')}>
+								<em>3</em>/10회
+							</span>
+						</li>
+
+						<li className={cx('ticket-list__item')}>
+							<h2 className={cx('ticket-list__title')}>
+								올클 블랙 이용권
+							</h2>
+
+							<span className={cx('ticket-list__number')}>
+								(FTEADGH22)
+							</span>
+
+							<span className={cx('ticket-list__count')}>
+								<em>3</em>/10회
+							</span>
 						</li>
 					</ul>
 				</div>
@@ -86,9 +121,9 @@ const Ticket = () => {
 						</div>
 
 						<div className={cx('ticket-history__left')}>
-							<h3 className={cx('ticket-history__name')}>
+							<h2 className={cx('ticket-history__name')}>
 								볼더하이웨이클라이밍
-							</h3>
+							</h2>
 
 							<p className={cx('ticket-history__date')}>
 								00-00-00 00:00
@@ -99,8 +134,53 @@ const Ticket = () => {
 
 				<div className={cx('ticket-detail')}>
 					<div className={cx('ticket-detail-header')}>
-
+						<h2 className={cx('ticket-detail-header__title')}>블랙 이용권</h2>
+						<span className={cx('ticket-detail-header__state')}>부분취소</span>
 					</div>
+
+					<dl className={cx('ticket-detail-info')}>
+						<div className={cx('ticket-detail-info__row')}>
+							<dt className={cx('ticket-detail-info__title')}>남은 횟수</dt>
+							<dd className={cx('ticket-detail-info__text')}>3회</dd>
+						</div>
+
+						<div className={cx('ticket-detail-info__row')}>
+							<dt className={cx('ticket-detail-info__title')}>구매 번호</dt>
+							<dd className={cx('ticket-detail-info__text')}>000000000</dd>
+						</div>
+
+						<div className={cx('ticket-detail-info__row')}>
+							<dt className={cx('ticket-detail-info__title')}>취소 일시</dt>
+							<dd className={cx('ticket-detail-info__text')}>12-12-12 00:00</dd>
+						</div>
+
+						<div className={cx('ticket-detail-info__row')}>
+							<dt className={cx('ticket-detail-info__title')}>결제 일시</dt>
+							<dd className={cx('ticket-detail-info__text')}>12-12-12 00:00</dd>
+						</div>
+
+						<div className={cx('ticket-detail-info__row')}>
+							<dt className={cx('ticket-detail-info__title')}>가격</dt>
+							<dd className={cx('ticket-detail-info__text')}>200,000 <span className={cx('ticket-detail-info__unit')}>원</span></dd>
+						</div>
+
+						<div className={cx('ticket-detail-info__row')}>
+							<dt className={cx('ticket-detail-info__title')}>할인 금액</dt>
+							<dd className={cx('ticket-detail-info__text')}>-200,000 <span className={cx('ticket-detail-info__unit')}>원</span></dd>
+						</div>
+
+						<div className={cx('ticket-detail-info__row', 'ticket-detail-info__row--total')}>
+							<dt className={cx('ticket-detail-info__title')}>총 결제 금액</dt>
+							<dd className={cx('ticket-detail-info__text')}>170,000 <span className={cx('ticket-detail-info__unit')}>원</span></dd>
+						</div>
+					</dl>
+
+					<button
+						type='button' 
+						className={cx('ticket-detail-button')}
+					>
+						취소 상세보기
+					</button>
 				</div>
 
 				<BottomNavi />
