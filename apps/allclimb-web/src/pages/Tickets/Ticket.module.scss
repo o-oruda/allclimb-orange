@@ -1,101 +1,251 @@
-.bottom-navi {
-	height: 56px;
+.ticket {
+	padding: 56px 0 112px;
 }
 
-.bottom-navi-list {
+.ticket__header {
 	position: fixed;
+	top: 0;
 	left: 0;
-	bottom: 0;
-	z-index: 100;
-	display: flex;
-	align-items: flex-end;
-	box-sizing: border-box;
-	padding: 0 12px;
 	width: 100%;
 	height: 56px;
-	border-radius: 28px 28px 0 0;
-	background-color: #2d2f34;
+	background-color: #1e1f23;
 }
 
-.bottom-navi-list__item {
-	flex: 1;
+.ticket__title {
+	padding: 4px 24px 0;
+	line-height: 32px;
+	color: #fff;
+	font-size: 22px;
+	font-weight: 700;
 
-	& + .bottom-navi-list__item {
-		margin-left: 4px;
+	em {
+		color: #ff0052;
+		font-size: 24px;
 	}
 }
 
-.bottom-navi-list__button {
-	box-sizing: border-box;
-	padding: 9px 6px 4px;
-	width: 100%;
-	line-height: 14px;
-	text-align: center;
-	color: #b6b7be;
-	font-size: 11px;
-	font-weight: 500;
+.ticket__list-box {
+	padding-top: 16px;
+}
 
-	&::before {
+.ticket-list {
+	overflow-x: auto;
+	display: flex;
+
+	&::before,
+	&::after {
 		content: '';
 		display: block;
-		margin: 0 auto 5px;
-		width: 24px;
-		height: 24px;
-		background-repeat: no-repeat;
-		background-size: 24px 24px;
+		min-width: 24px;
 	}
 
-	&[aria-current='page'] {
+	.ticket-list__item {
+		position: relative;
+		padding: 20px;
+		box-sizing: border-box;
+		min-width: 312px;
+		height: 147px;
+		background-color: #ff1b65;
+		border-radius: 16px;
+
+		& + .ticket-list__item {
+			margin-left: 16px;
+		}
+	}
+
+	.ticket-list__title {
+		line-height: 21px;
 		color: #fff;
+		font-size: 17px;
 	}
 
-	&.bottom-navi-list__button--home {
-		&::before {
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-home.svg);
-		}
-
-		&[aria-current='page']::before {
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-home-on.svg);
-		}
+	.ticket-list__number {
+		display: block;
+		margin-top: 4px;
+		line-height: 15px;
+		color: #fff;
+		font-size: 17px;
 	}
 
-	&.bottom-navi-list__button--ticket {
-		&::before {
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-ticket.svg);
-		}
+	.ticket-list__count {
+		position: absolute;
+		right: 16px;
+		bottom: 16px;
+		line-height: 40px;
+		color: rgba(255, 255, 255, 0.35);
+		font-size: 32px;
+		font-weight: 700;
 
-		&[aria-current='page']::before {
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-ticket-on.svg);
-		}
-	}
-
-	&.bottom-navi-list__button--pay {
-		&::before {
-			margin-bottom: 0;
-			width: 62px;
-			height: 62px;
-			background-size: 62px 62px;
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-pay.svg);
+		em {
+			color: #fff;
 		}
 	}
+}
 
-	&.bottom-navi-list__button--record {
-		&::before {
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-record.svg);
-		}
+.ticket-tab {
+	display: flex;
+	padding: 0 24px;
 
-		&[aria-current='page']::before {
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-record-on.svg);
+	.ticket-tab__item {
+		& + .ticket-tab__item {
+			margin-left: 16px;
 		}
 	}
 
-	&.bottom-navi-list__button--more {
-		&::before {
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-more.svg);
-		}
+	.ticket-tab__button {
+		line-height: 32px;
+		color: rgba(255, 255, 255, 0.3);
+		font-size: 22px;
+		font-weight: 700;
+	}
 
-		&[aria-current='page']::before {
-			background-image: url(../../shared/resources/images/components/BottomNavi/icon-bottom-navi-more-on.svg);
+	[aria-selected="true"] {
+		.ticket-tab__button {
+			color: #fff;
 		}
 	}
+}
+
+.ticket-history {
+	margin-top: 16px;
+	padding: 0 24px;
+
+	.ticket-history__item {
+		position: relative;
+		display: flex;
+		align-items: center;
+		box-sizing: border-box;
+		padding: 10px 0 10px 60px;
+		min-height: 64px;
+	}
+
+	.ticket-history__img {
+		overflow: hidden;
+		position: absolute;
+		top: 50%;
+		left: 0;
+		transform: translateY(-50%);
+		width: 44px;
+		height: 44px;
+		border-radius: 22px;
+	}
+
+	.ticket-history__left {
+		flex: 1;
+	}
+
+	.ticket-history__name {
+		line-height: 24px;
+		color: #fff;
+		font-size: 16px;
+	}
+
+	.ticket-history__date {
+		line-height: 20px;
+		color: #6b6b6b;
+	}
+	
+	.ticket-history__right {
+		margin-left: 14px;
+		white-space: nowrap;
+		text-align: right;
+	}
+
+	.ticket-history__count {
+		display: block;
+		line-height: 22px;
+		color: #ff296e;
+		font-size: 14px;
+		font-weight: 500;
+	}
+
+	.ticket-history__number {
+		line-height: 20px;
+		color: #b6b7be;
+	}
+}
+
+.ticket-detail {
+	margin: 0 24px;
+	padding: 28px 20px 20px;
+	border-radius: 16px;
+	background-color: #222428;
+}
+
+.ticket-detail-header {
+	display: flex;
+	justify-content: space-between;
+
+	.ticket-detail-header__title {
+		line-height: 26px;
+		color: #fff;
+		font-size: 18px;
+		font-weight: 700;
+	}
+
+	.ticket-detail-header__state {
+		display: block;
+		padding: 5px 8px;
+		line-height: 18px;
+		color: #ff0052;
+		font-size: 12px;
+		font-weight: 500;
+		border-radius: 8px;
+		background-color: rgba(255, 0, 82, 0.1);
+	}
+}
+
+.ticket-detail-info {
+	margin-top: 32px;
+
+	.ticket-detail-info__row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		& + .ticket-detail-info__row {
+			margin-top: 8px;
+		}
+	}
+
+	.ticket-detail-info__title {
+		line-height: 24px;
+		color: #fff;
+		font-size: 14px;
+	}
+
+	.ticket-detail-info__text {
+		line-height: 24px;
+		color: #fff;
+		font-size: 14px;
+	}
+
+	.ticket-detail-info__unit {
+		font-size: 14px;
+	}
+
+	.ticket-detail-info__row--total {
+		margin-top: 16px !important;
+		padding-top: 16px;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+		.ticket-detail-info__text {
+			line-height: 24px;
+			color: #fff;
+			font-size: 20px;
+			font-weight: 500;
+		}
+	}
+}
+
+.ticket-detail-button {
+	display: block;
+	margin-top: 32px;
+	padding: 11px 0;
+	width: 100%;
+	line-height: 24px;
+	color: #fff;
+	font-size: 14px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 10px;
 }
